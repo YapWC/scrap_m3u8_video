@@ -1,6 +1,4 @@
 from lib import VideoFile
-import requests
-import sys
 import argparse
 import os
 
@@ -14,7 +12,7 @@ args = parser.parse_args()
 
 if __name__=="__main__":
     if not os.path.exists(args.output_folder):
-        os.makedirs(output_folder)
+        os.makedirs(args.output_folder)
 
     video = VideoFile(args.video_link, args.name_file_as, args.output_folder)
     ts_video = video.download_video()
