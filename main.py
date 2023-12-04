@@ -1,6 +1,4 @@
 from lib import M3u8VideoInformation
-import requests
-import sys
 import argparse
 import os
 
