@@ -2,10 +2,10 @@
 
 This project enable web scrapping for video that come with m3u8 file extension.
 
-#####What is m3u8 file? ([More Info](http://https://www.lifewire.com/m3u8-file-2621956 "More Info"))
+##### What is m3u8 file? ([More Info](http://https://www.lifewire.com/m3u8-file-2621956 "More Info"))
 A file with the M3U8 file extension is a UTF-8 encoded playlist file. M3U8 files are plain text files that can be used to store the URL paths of streaming audio or video and information about the media tracks. (VIVE BUSINESS, 2023)
 
-#####Expected Outcome of this Project
+##### Expected Outcome of this Project
 Able to extract and access the URL paths of streaming video (which will be a ts video file in multiple segments) to download the contents.
 
 ## Getting Started
@@ -27,7 +27,7 @@ pip3 install -r requirements
 1. On Developer Tools open Network Tab.
 1. Type ".m3u8" in the search bar.
 1. Right click on the m3u8 master file and copy the link address.
-![How to get m3u8 master file](./docs/image "How to get m3u8 master file")
+![How to get m3u8 master file](./docs/image/"How to get m3u8 master file")
 
 ## Usage
 ```
