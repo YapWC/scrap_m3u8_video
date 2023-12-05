@@ -27,7 +27,7 @@ pip3 install -r requirements
 1. On Developer Tools open Network Tab.
 1. Type ".m3u8" in the search bar.
 1. Right click on the m3u8 master file and copy the link address.
-![How to get m3u8 master file](./docs/image/How_to_get_m3u8_master_file.png =100x)
+<img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="300" height="auto">
 
 ## Usage
 ```
