@@ -48,6 +48,7 @@ If successful you will the downloaded file in "downloaded_video" folder.
 - [x] Add Progress Bar
 - [ ] Create a simple UI and executable program
 - [ ] Catch connection error to avoid re-download
+- [ ] Write unittest
 
 See the [open issues](https://github.com/YapWC/scrap_m3u8_video/issues) for a full list of proposed features (and known issues).
 
