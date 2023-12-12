@@ -20,7 +20,8 @@ class Url:
     
     def get_base_url(self):
         splitted_original_url = self.url.split("/")
-        base_url = splitted_original_url[0:-1]
+        new_url = splitted_original_url[0:-1]
+        base_url = "/".join(new_url)
         return base_url
 
 
@@ -61,13 +62,12 @@ class M3u8Url(Url):
                 elif self.check_if_word_exist_in_the_link(first_data_link, self.extension):
                     # if instead .m3u8 was found in the link then we need to dig deeper for ts video link/uri
                     base_url = self.get_base_url()
-                    new_url = "/".join(base_url, first_data_link)
-                    self.url = new_url
-                    self.__get_ts_contents()
+                    new_url = "/".join([base_url, first_data_link])
+                    self.__init__(new_url)
                 elif self.check_if_word_exist_in_the_link(first_data_link, ".ts"):
                     contents = []
                     for segments in specific_metadata:
-                        ts = TsUrl("/".join(self.get_base_url, segments["uri"]))
+                        ts = TsUrl("/".join([self.get_base_url(), segments["uri"]]))
                         contents.append(ts.video_binary_data)     
                     return contents
                 else:
