@@ -14,5 +14,5 @@ if __name__=="__main__":
     if not os.path.exists(args.output_folder):
         os.makedirs(args.output_folder)
 
-    video = M3u8Url(args.video_link)
-    video.data.download(args.output_folder, args.name_file_as)
+    video_link = M3u8Url(args.video_link)
+    video_link.video_instance.download(args.output_folder, args.name_file_as)

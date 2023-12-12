@@ -42,8 +42,7 @@ class M3u8Url(Url):
         self.response = self.get_response(url, self.__class__.__name__)
         self.metadata = self.__get_metadata()
         self.ts_video_binary_contents = self.__get_ts_contents()
-        breakpoint()
-        self.data = VideoData(self.__get_ts_contents())
+        self.video_instance = VideoData(self.ts_video_binary_contents)
     
     def __get_metadata(self):
         m3u8_master = m3u8.loads(self.response.text)
@@ -56,11 +55,9 @@ class M3u8Url(Url):
             if specific_metadata:
                 # First link are always connected to the highest resolution video
                 first_data_link = specific_metadata[0]["uri"]
-                breakpoint()
                 if self.check_if_word_exist_in_the_link(first_data_link, "https"):
                     response = self.get_response(first_data_link, self.__class__.__name__)
-                    breakpoint()
-                    return response.content
+                    return [response.content]
                 elif self.check_if_word_exist_in_the_link(first_data_link, self.extension):
                     # if instead .m3u8 was found in the link then we need to dig deeper for ts video link/uri
                     base_url = self.get_base_url()
@@ -71,7 +68,6 @@ class M3u8Url(Url):
                     contents = []
                     for segments in specific_metadata:
                         ts = TsUrl("/".join(self.get_base_url, segments["uri"]))
-                        breakpoint()
                         contents.append(ts.video_binary_data)     
                     return contents
                 else:

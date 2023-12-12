@@ -18,7 +18,7 @@ class VideoData(Data):
         file.close()
                 
         mins, seconds = self.record_process_time(starting=False)
-        print("%s | Downloaded | %s mins %s seconds" % (self.file_name, mins, seconds))
+        print("%s | Downloaded | %s mins %s seconds" % (title, mins, seconds))
 
     def record_process_time(self, starting=True):
         global start_time
