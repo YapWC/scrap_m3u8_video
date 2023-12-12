@@ -30,8 +30,14 @@ pip3 install -r requirements
 <img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="600" height="auto">
 
 ## Usage
+Example 1:
 ```
-python3 main.py "<the link>" <name the file as you like> ./downloaded_video/
+python3 main.py "<the link>" ./downloaded_video/ <name the file as you like>
+```
+
+Example 2: (Help you get the title of the video based on the website)
+```
+python3 main.py "<the_link>" ./downloaded_video/ "<website_link>"
 ```
 If successful you will the downloaded file in "downloaded_video" folder.
 
@@ -39,8 +45,10 @@ If successful you will the downloaded file in "downloaded_video" folder.
 
 <!-- ROADMAP -->
 ## Roadmap
-- [ ] Add Progress Bar
+- [x] Add Progress Bar
 - [ ] Create a simple UI and executable program
+- [ ] Catch connection error to avoid re-download
+- [ ] Write unittest
 
 See the [open issues](https://github.com/YapWC/scrap_m3u8_video/issues) for a full list of proposed features (and known issues).
 
