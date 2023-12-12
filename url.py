@@ -2,6 +2,8 @@ import requests
 import m3u8
 from bs4 import BeautifulSoup
 from data import VideoData
+from alive_progress import alive_bar
+
 
 class Url:
     def __init__(self, url) -> None:
@@ -61,19 +63,21 @@ class M3u8Url(Url):
                     # if instead .m3u8 was found in the link then we need to dig deeper for ts video link/uri
                     base_url = self.get_base_url()
                     new_url = "/".join([base_url, first_data_link])
-                    break
+                    # Use the new url whenever we found a new url path
+                    new_instance = M3u8Url(new_url)
+                    # When ts is found then we return its contents
+                    return new_instance.ts_video_binary_contents
                 elif self.check_if_word_exist_in_the_link(first_data_link, ".ts"):
                     contents = []
-                    for segments in specific_metadata:
-                        ts_url = "/".join([self.get_base_url(), segments["uri"]])
-                        ts = TsUrl(ts_url)
-                        contents.append(ts.video_binary_data) 
+                    with alive_bar(len(specific_metadata), title="Downloading") as bar:
+                        for segments in specific_metadata:
+                            ts_url = "/".join([self.get_base_url(), segments["uri"]])
+                            ts = TsUrl(ts_url)
+                            contents.append(ts.video_binary_data)
+                            bar()
                     return contents
                 else:
                     raise Exception("No link found")
-        
-        self.__init__(new_url)
-        print("Initialize")
     
     def check_if_word_exist_in_the_link(self, link, word_to_search_for):
         position = link.find(word_to_search_for)
