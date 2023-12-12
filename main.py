@@ -1,4 +1,4 @@
-from lib import M3u8VideoInformation
+from url import M3u8Url, Mp4Url, WebsiteUrl
 import argparse
 import os
 
@@ -14,5 +14,5 @@ if __name__=="__main__":
     if not os.path.exists(args.output_folder):
         os.makedirs(args.output_folder)
 
-    video = M3u8VideoInformation(args.video_link, args.name_file_as)
-    ts_video = video.download_video(args.output_folder)
+    video = M3u8Url(args.video_link)
+    video.data.download(args.output_folder, args.name_file_as)
