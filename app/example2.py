@@ -1,4 +1,4 @@
-from lib.url import M3u8Url, WebsiteUrl
+from src.url import M3u8Url, WebsiteUrl
 import argparse
 import os
 

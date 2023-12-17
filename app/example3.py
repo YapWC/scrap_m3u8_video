@@ -1,5 +1,5 @@
-from lib.url import M3u8Url, WebsiteUrl
-from lib.file import TextFile
+from src.url import M3u8Url, WebsiteUrl
+from src.file import TextFile
 import argparse
 import os
 
