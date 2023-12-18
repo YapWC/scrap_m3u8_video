@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 """
     Example 3: Parse in 2 txt file that have the m3u8 videos and websites urls
-        python3 main.py "<videos_url_file_path>" ./downloaded_video/ "<websites_url_file_path>"
+        python3 main.py "<videos_url_file_path>" "<websites_url_file_path>" ./downloaded_video/
 
 """
 if __name__=="__main__":

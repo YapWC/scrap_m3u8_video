@@ -1,5 +1,6 @@
 import requests
 import m3u8
+import time
 from bs4 import BeautifulSoup
 from src.data import VideoData
 from alive_progress import alive_bar
@@ -11,13 +12,20 @@ class Url:
         self.response = self.get_response(url, self.__class__.__name__)
 
     def get_response(self, url, class_name):
-        try:
-            response = requests.get(url)
-            #response.raise_for_status()
-            print("Request Succesful for %s with Status Code: %s" % (class_name, response.status_code))
-        except requests.exceptions.RequestException as e:
-            print("Request Fail for %s with Status Code: %s" % (class_name, e))
-        
+        while True:
+            try:
+                response = requests.get(url, timeout=5)
+                #response.raise_for_status()
+                print("Request Succesful for %s with Status Code: %s" % (class_name, response.status_code))
+            except requests.exceptions.ConnectionError as e:
+                print("Request Fail for %s with Status Code: %s" % (class_name, e))
+                wait_for_connection = 30
+                print(f"Retrying to Connect in {wait_for_connection} seconds")
+                time.sleep(wait_for_connection)
+                continue
+            except requests.exceptions.RequestException as e:
+                print("Request Fail for %s with Status Code: %s" % (class_name, e))
+            break
         return response
     
     def get_base_url(self):
