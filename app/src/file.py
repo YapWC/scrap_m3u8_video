@@ -1,28 +1,44 @@
+"""This module deal with reading the content of a file."""
+
+
 class File:
+    """Base class for any file"""
     def __init__(self, path) -> None:
+        """
+
+        Args:
+            path (str): Path to the file ("/")
+        """
         self.path = path
         self.name = self.get_filename()
     
     def get_filename(self):
-        splitted_text = self.path.split("/")
-        file_name = splitted_text[-1]
+        """
+
+        Returns:
+            str: name of the file
+        """
+        split_text = self.path.split("/")
+        file_name = split_text[-1]
         return file_name
 
 
 class TextFile(File):
+    """Subclass for text file"""
     def __init__(self, path) -> None:
-        super().__init__(path)
-    
-
-    def get_file_contents(self):
         """
-        Reads a file line by line using a while loop.
 
         Args:
-            filename: The path to the file to read.
+            path (str): Path to the text file
+        """
+        super().__init__(path)
+
+    def get_file_contents(self):
+        """Read the content of the text file line by line
+        and store the texts
 
         Returns:
-            A list of lines in the file.
+            list: lines of strings of the text file contents
         """
         lines = []
 
