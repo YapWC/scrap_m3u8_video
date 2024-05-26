@@ -28,6 +28,6 @@ if __name__=="__main__":
 
     for i in range(len(list_of_websites_link)):
         website = WebsiteUrl(list_of_websites_link[i])
-        title = website.get_specific_html_content("title")
+        title = website.get_specific_html_content("h1")
         video_link = M3u8Url(list_of_videos_link[i])
         video_link.video_instance.download(args.output_folder, title)
