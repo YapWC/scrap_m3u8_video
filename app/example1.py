@@ -2,17 +2,15 @@ from src.url import M3u8Url
 import argparse
 import os
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("video_link", help="The video link to download.")
 parser.add_argument("output_folder", help="Example: ./video/")
-
 
 """
     Example 1: 
         python3 main.py "<the_link>" ./downloaded_video/ <name the file as you like>
 """
-if __name__=="__main__":
+if __name__ == "__main__":
     parser.add_argument("name_file_as", help="Name the downloaded file as.")
     args = parser.parse_args()
 

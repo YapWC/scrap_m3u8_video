@@ -8,6 +8,8 @@ A file with the M3U8 file extension is a UTF-8 encoded playlist file. M3U8 files
 ##### Expected Outcome of this Project
 Able to extract and access the URL paths of streaming video (which will be a ts video file in multiple segments) to download the contents.
 
+--------
+
 ## Getting Started
 
 Total of 3 main steps to web scrap a video with this repo.
@@ -29,19 +31,36 @@ pip3 install -r requirements
 1. Right click on the m3u8 master file and copy the link address.
 <img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="600" height="auto">
 
+--------
+
 ## Usage
-Example 1:
+### Example 1:
 ```
 python3 main.py "<the link>" ./downloaded_video/ <name the file as you like>
 ```
 
-Example 2: (Help you get the title of the video based on the website)
+### Example 2: (Help you get the title of the video based on the website)
 ```
 python3 main.py "<the_link>" ./downloaded_video/ "<website_link>"
+``` 
+*Notes: Make sure to always set the html element that you would like to target (example2-4)*
+
+### Example 3: (Compile all the m3u8 url and website url to download multiple video)
+
+Create 2 txt file for video url and website url compilation.
+
+Save all the video url and website url in respective txt file.
 ```
-If successful you will the downloaded file in "downloaded_video" folder.
+python3 main.py "<videos_url_file_path>" "<websites_url_file_path>" ./downloaded_video/
+```
 
+### Example 4: (Download video with multi-threading)
+```
+python3 main.py "<videos_url_file_path>" "<websites_url_file_path> ./downloaded_video/"
+```
+If successful you will get the downloaded file in "downloaded_video" folder.
 
+-------
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -51,6 +70,8 @@ If successful you will the downloaded file in "downloaded_video" folder.
 - [ ] Write unittest
 
 See the [open issues](https://github.com/YapWC/scrap_m3u8_video/issues) for a full list of proposed features (and known issues).
+
+--------
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -68,7 +89,7 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+-------
 
 <!-- LICENSE -->
 ## License

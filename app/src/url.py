@@ -172,18 +172,18 @@ class WebsiteUrl(Url):
     def __get_html(self):
         return BeautifulSoup(self.response.text, 'html.parser')
     
-    def get_specific_html_content(self, element, attribute=None):
+    def get_specific_html_content(self, element, attribute=None, value=None):
         """
 
         Args:
             element (str): The html element
             attribute (str): The attribute of the html element
+            value (str): The value of the element attribute
 
         Returns:
             str: The content of the html element
         """
-        element_contents = self.html.find(element)
-        if attribute:
-            return element_contents.get(attribute)
-        else:
-            return element_contents.text
+        top_level_element = self.html.find(element, {attribute: value})
+        next_lower_element = top_level_element.next_element
+        return next_lower_element.contents[0]
+
