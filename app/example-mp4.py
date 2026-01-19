@@ -11,7 +11,7 @@ parser.add_argument("output_folder", help="Example: ./video/")
         python3 main.py "<the_link>" ./downloaded_video/ <name the file as you like>
 """
 if __name__ == "__main__":
-    parser.add_argument("name_file_as", help="Name the downloaded file as.")
+    parser.add_argument("--name-file-as", dest="name_file_as", default=None, required=False, help="Name the downloaded file as.")
     args = parser.parse_args()
 
     if not os.path.exists(args.output_folder):

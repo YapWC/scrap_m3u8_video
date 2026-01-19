@@ -6,7 +6,7 @@ import time
 from bs4 import BeautifulSoup
 from src.data import VideoData
 from alive_progress import alive_bar
-
+from pathlib import Path
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -76,7 +76,15 @@ class Mp4Url(Url):
             url (str): The target url for video with mp4 format 
         """
         super().__init__(url)
-        self.data = VideoData(self.response)
+        self.title = self.__get_title()
+        self.data = VideoData(self.response, self.title)
+    
+    def __get_title(self):
+        if ".mp4" in self.url:
+            return Path(self.url).name
+        
+        # Use 'raise' to actually trigger the error
+        raise ValueError(f"Invalid URL: '{self.url}' is not a .mp4 file.")
 
 
 class M3u8Url(Url):
