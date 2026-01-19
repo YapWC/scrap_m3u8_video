@@ -8,6 +8,13 @@ from src.data import VideoData
 from alive_progress import alive_bar
 
 
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+
 class Url:
     """Base class for url"""
     def __init__(self, url) -> None:
@@ -32,7 +39,7 @@ class Url:
         """
         while True:
             try:
-                response = requests.get(url, timeout=5)
+                response = requests.get(url, headers=headers,timeout=5)
                 # response.raise_for_status()
                 print("Request Successful for %s with Status Code: %s" % (class_name, response.status_code))
             except requests.exceptions.ConnectionError as e:
@@ -69,7 +76,7 @@ class Mp4Url(Url):
             url (str): The target url for video with mp4 format 
         """
         super().__init__(url)
-        self.data = VideoData(self.response.content)
+        self.data = VideoData(self.response)
 
 
 class M3u8Url(Url):
