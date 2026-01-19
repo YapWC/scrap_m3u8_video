@@ -18,4 +18,4 @@ if __name__ == "__main__":
         os.makedirs(args.output_folder)
 
     video = Mp4Url(args.video_link)
-    video.data.download(args.output_folder, args.name_file_as)
+    video.data.download(args.output_folder, args.name_file_as or video.title)

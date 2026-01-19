@@ -3,27 +3,26 @@
 
 class Data:
     """Base class for any kind of data like photo, video, text, etc"""
-    def __init__(self, data, title) -> None:
+    def __init__(self, data) -> None:
         """
 
         Args:
             data (object): The data content in any format
         """
         self.data = data
-        self.title = title
 
 
 class VideoData(Data):
     """Parent class for video data receive in any format but return in .mp4 format"""
     name_extension = ".mp4"
 
-    def __init__(self, data, title):
+    def __init__(self, data):
         """
 
         Args:
             data (object): The data content in any format
         """
-        super().__init__(data, title)
+        super().__init__(data)
 
     def download(self, output_folder_path, title):
         """Write the data into a file format."""
