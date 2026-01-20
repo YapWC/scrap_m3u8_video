@@ -29,7 +29,8 @@ class VideoData(Data):
         if title is None:
             title = self.title
         
-        with open(f"{output_folder_path}{title}{self.name_extension}", "wb") as file:
+        video_file_path = f"{output_folder_path}{title}"
+        with open(video_file_path, "wb") as file:
             # If data is one big byte object, write it directly
             if isinstance(self.data, (bytes, bytearray)):
                 file.write(self.data)
@@ -38,4 +39,5 @@ class VideoData(Data):
                 for chunk in self.data:
                     file.write(chunk)
 
-        print("%s%s | Downloaded " % (title, self.name_extension))
+        print("%s | Downloaded " % (title))
+        return video_file_path
