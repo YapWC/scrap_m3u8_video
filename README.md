@@ -8,32 +8,40 @@ A file with the M3U8 file extension is a UTF-8 encoded playlist file. M3U8 files
 ##### Expected Outcome of this Project
 Able to extract and access the URL paths of streaming video (which will be a ts video file in multiple segments) to download the contents.
 
---------
-
 ## Getting Started
 
-Total of 3 main steps to web scrap a video with this repo.
-1. Get the m3u8 master file link
-1. Run the link with the script
-1. Wait download to complete :)
+2 Usage Method: 
+1. [Run as Microservice with Flask](#usage-run-as-microservice-with-flask)
+1. [Running via Script](#usage-running-via-script)
 
 ### Prerequisites
 - Setup environment
 ```
 git clone <this repo via https or other means>
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
-- Get m3u8 master file
-1. Open Developer Tools or Ctrl + Shift + I on your browser.
-1. Search the video you would like to donwload and play it.
-1. On Developer Tools open Network Tab.
-1. Type ".m3u8" in the search bar.
-1. Right click on the m3u8 master file and copy the link address.
-<img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="600" height="auto">
 
---------
+## Usage (Run as Microservice with Flask)
 
-## Usage
+```shell
+flask --app app run --host 0.0.0.0 --port 3000
+```
+_Note: Only support MP4 video download for now_
+
+## Usage (Running via Script)
+
+
+Total of 3 main steps to web scrap a m3u8 video with this repo.
+1. [Get the m3u8 master file link](#)
+    1. Open Developer Tools or Ctrl + Shift + I on your browser.
+    1. Search the video you would like to donwload and play it.
+    1. On Developer Tools open Network Tab.
+    1. Type ".m3u8" in the search bar.
+    1. Right click on the m3u8 master file and copy the link address.
+    <img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="600" height="auto">
+1. Run the link with the script
+1. Wait download to complete :)
+
 ### Example 1:
 ```
 python3 main.py "<the link>" ./downloaded_video/ <name the file as you like>
@@ -60,7 +68,7 @@ python3 main.py "<videos_url_file_path>" "<websites_url_file_path> ./downloaded_
 ```
 If successful you will get the downloaded file in "downloaded_video" folder.
 
--------
+
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -71,7 +79,6 @@ If successful you will get the downloaded file in "downloaded_video" folder.
 
 See the [open issues](https://github.com/YapWC/scrap_m3u8_video/issues) for a full list of proposed features (and known issues).
 
---------
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -88,8 +95,6 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
--------
 
 <!-- LICENSE -->
 ## License

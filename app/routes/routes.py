@@ -12,7 +12,7 @@ bp = Blueprint("routes", __name__)
 DOWNLOAD_FOLDER = "downloaded_video"
 
 
-@bp.route("/index", methods=("GET", "POST"))
+@bp.route("/", methods=("GET", "POST"))
 def index():
     if request.method == "POST":
         video_url = request.form["video-url"]
