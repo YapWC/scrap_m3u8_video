@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Video Downloader{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="video-url">Video URL </label>
+    <input type="url" name="video-url" id="video-url" required>
+    <label for="name-file-as">Name File As</label>
+    <input name="name-file-as" id="name-file-as">
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
+
+{% block result %}
+    {% if video_file %}
+        <a href="{{ url_for('routes.download_file', filename=video_file) }}" download="optional_filename">
+            Download {{ video_file }}
+        </a>
+    {% endif %}
+{% endblock %}

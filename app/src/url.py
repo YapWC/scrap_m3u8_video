@@ -4,7 +4,7 @@ import requests
 import m3u8
 import time
 from bs4 import BeautifulSoup
-from src.data import VideoData
+from .data import VideoData
 from alive_progress import alive_bar
 from pathlib import Path
 
