@@ -141,8 +141,6 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
@@ -156,8 +154,9 @@ Thanks to:
 
 Thanks for making it free and a source for educational purpose.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Disclaimer
 
 This project does not suggest/recommend/encourage copyright infringement of anykind.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
