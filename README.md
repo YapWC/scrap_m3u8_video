@@ -26,7 +26,7 @@ Able to extract and access the URL paths of streaming video (which will be a ts 
   pip3 install -r requirements.txt
   ```
 
-## 2 Usage Method:
+## 2 Usage Method
 
 1. [Run as Microservice with Flask](#usage-run-as-microservice-with-flask)
 1. [Running via Script](#usage-running-via-script)
@@ -49,13 +49,13 @@ Make sure to obtain the `.mp4` or `.m3u8` link.
 
 ## Usage (Run as Microservice with Flask)
 
-Run the following command and navigate to the application server (e.g. http://127.0.0.1:3000).
+Run the following command and navigate to the application server (e.g. <http://127.0.0.1:3000>).
 
 ```shell
 flask --app app run --port 3000
 ```
 
-_Note: Only support MP4 video download for now_
+_Note: Only support MP4 video download for now._
 
 ## Usage (Running via Script)
 
@@ -67,8 +67,6 @@ Run the following script.
 python3 video_downloader.py "<the_link>" --name-file-as custom_name
 ```
 
-Copy the `.mp4` video link and proceed with [Example 1](#)
-
 ### Scrap M3U8 Video
 
 Total of 3 main steps to web scrap a m3u8 video with this repo.
@@ -77,19 +75,19 @@ Total of 3 main steps to web scrap a m3u8 video with this repo.
 1. Run the link with the script.
 1. Wait download to complete.
 
-### Example 1:
+### Example 1
 
-```
+```shell
 python3 main.py "<the link>" ./downloaded_video/ <name the file as you like>
 ```
 
 ### Example 2: (Help you get the title of the video based on the website)
 
-```
+```shell
 python3 main.py "<the_link>" ./downloaded_video/ "<website_link>"
 ```
 
-_Notes: Make sure to always set the html element that you would like to target (example2-4)_
+_Notes: Make sure to always set the html element that you would like to target (example2-4)._
 
 ### Example 3: (Compile all the m3u8 url and website url to download multiple video)
 
@@ -97,13 +95,13 @@ Create 2 txt file for video url and website url compilation.
 
 Save all the video url and website url in respective txt file.
 
-```
+```shell
 python3 main.py "<videos_url_file_path>" "<websites_url_file_path>" ./downloaded_video/
 ```
 
 ### Example 4: (Download video with multi-threading)
 
-```
+```shell
 python3 main.py "<videos_url_file_path>" "<websites_url_file_path> ./downloaded_video/"
 ```
 
