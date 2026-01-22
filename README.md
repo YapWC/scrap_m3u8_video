@@ -59,21 +59,14 @@ _Note: Only support MP4 video download for now._
 
 ## Usage (Running via Script)
 
-### Scrap MP4 Video
-
 Run the following script.
 
 ```shell
 python3 video_downloader.py "<the_link>" --name-file-as custom_name
 ```
 
-### Scrap M3U8 Video
-
-Total of 3 main steps to web scrap a m3u8 video with this repo.
-
-1. Get the m3u8 master file link
-1. Run the link with the script.
-1. Wait download to complete.
+<details>
+<summary> Optional Example Files to Use </summary>
 
 ### Example 1
 
@@ -106,6 +99,8 @@ python3 main.py "<videos_url_file_path>" "<websites_url_file_path> ./downloaded_
 ```
 
 If successful you will get the downloaded file in "downloaded_video" folder.
+
+</details>
 
 <!-- ROADMAP -->
 
