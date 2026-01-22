@@ -17,22 +17,22 @@ def download_video(video_link, name_file_as):
         os.makedirs(output_folder)
 
     if ".mp4" in video_link:
-        __mp4_video_download(video_link, output_folder, name_file_as)
+        return __mp4_video_download(video_link, output_folder, name_file_as)
     elif ".m3u8" in video_link:
-        __m3u8_video_download(video_link, output_folder, name_file_as)
+        return __m3u8_video_download(video_link, output_folder, name_file_as)
     else:
         raise "This file is not supported"
 
 
 def __mp4_video_download(video_link, output_folder, name_file_as=None):
     video = Mp4Url(video_link)
-    video.data.download(output_folder, name_file_as or video.title)
+    return video.data.download(output_folder, name_file_as or video.title)
 
 
 def __m3u8_video_download(video_link, output_folder, name_file_as=None):
     print("Running m3u8 download.")
     video = M3u8Url(video_link)
-    video.data.download(output_folder, name_file_as or video.title, remux=True)
+    return video.data.download(output_folder, name_file_as or video.title, remux=True)
 
 
 if __name__ == "__main__":
