@@ -1,6 +1,5 @@
 """This module suppose to deal with any data type (photo, video, text, etc.) and format (raw, mp4, etc.)"""
 
-
 import os
 
 
@@ -60,7 +59,8 @@ class VideoData(Data):
 
         if remux:
             self.__remux_ts_to_mp4(
-                video_file_path, f"{output_folder_path}{title}-remuxed{self.output_file_format}"
+                video_file_path,
+                f"{output_folder_path}{title}-remuxed{self.output_file_format}",
             )
             os.remove(video_file_path)
 
