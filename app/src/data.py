@@ -47,9 +47,9 @@ class VideoData(Data):
     def download(self, output_folder_path, title, remux=False):
         """Write the data into a file format."""
 
-        full_filename = f"{title}{self.output_file_format}"
+        full_filename = title + self.output_file_format
 
-        video_file_path = f"{output_folder_path}{title}{self.output_file_format}"
+        video_file_path = output_folder_path + full_filename
         with open(video_file_path, "wb") as file:
             # If data is one big byte object, write it directly
             if isinstance(self.data, (bytes, bytearray)):
@@ -60,16 +60,11 @@ class VideoData(Data):
                     file.write(chunk)
 
         if remux:
-            full_filename = f"{title}-remuxed{self.output_file_format}"
+            full_filename = title + "-remuxed" + self.output_file_format
+            output_video_file_path = output_folder_path + full_filename
 
-            self.__remux_ts_to_mp4(
-                video_file_path,
-                f"{output_folder_path}{title}-remuxed{self.output_file_format}",
-            )
+            self.__remux_ts_to_mp4(video_file_path, output_video_file_path)
             os.remove(video_file_path)
-
-            print(f"{full_filename} | Downloaded ")
-            return full_filename
 
         print(f"{full_filename} | Downloaded ")
         return full_filename
