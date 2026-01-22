@@ -10,24 +10,11 @@ class Data:
             data (object): The data content in any format
         """
         self.data = data
-
-
-class VideoData(Data):
-    """Parent class for video data receive in any format but return in .mp4 format"""
-    name_extension = ".mp4"
-
-    def __init__(self, data):
-        """
-
-        Args:
-            data (object): The data content in any format
-        """
-        super().__init__(data)
-
+    
     def download(self, output_folder_path, title):
         """Write the data into a file format."""
-        if title is None:
-            title = self.title
+        if self.extension_type not in title:
+            title = title + self.extension_type
         
         video_file_path = f"{output_folder_path}{title}"
         with open(video_file_path, "wb") as file:
@@ -41,3 +28,16 @@ class VideoData(Data):
 
         print("%s | Downloaded " % (title))
         return video_file_path
+
+
+class VideoData(Data):
+    """Parent class for video data receive in any format but return in .mp4 format"""
+
+    def __init__(self, data, extension):
+        """
+
+        Args:
+            data (object): The data content in any format
+        """
+        super().__init__(data)
+        self.extension_type = extension

@@ -77,7 +77,7 @@ class Mp4Url(Url):
         """
         super().__init__(url)
         self.title = self.__get_title()
-        self.data = VideoData(self.response)
+        self.data = VideoData(self.response, self.extension)
     
     def __get_title(self):
         if ".mp4" in self.url:
