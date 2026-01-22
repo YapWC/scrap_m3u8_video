@@ -2,51 +2,80 @@
 
 This project enable web scrapping for video that come with most common file extension; `.mp4`, `.ts`, `.m4s`, which normally require `.m3u8` playlist.
 
-##### What is m3u8 file? ([More Info](http://https://www.lifewire.com/m3u8-file-2621956 "More Info"))
+<details>
+<summary> What is m3u8 file? </summary>
 
 A file with the M3U8 file extension is a UTF-8 encoded playlist file. M3U8 files are plain text files that can be used to store the URL paths of streaming audio or video and information about the media tracks. (VIVE BUSINESS, 2023)
 
-##### Expected Outcome of this Project
+[More Info on m3u8](https://www.lifewire.com/m3u8-file-2621956)
+
+</details>
+
+## Expected Outcome of this Project
 
 Able to extract and access the URL paths of streaming video (which will be a ts video file in multiple segments) to download the contents.
 
 ## Getting Started
 
-2 Usage Method:
-
-1. [Run as Microservice with Flask](#usage-run-as-microservice-with-flask)
-1. [Running via Script](#usage-running-via-script)
-
 ### Prerequisites
 
 - Setup environment
 
-```
-git clone <this repo via https or other means>
-pip3 install -r requirements.txt
-```
+  ```shell
+  git clone <this repo>
+  pip3 install -r requirements.txt
+  ```
+
+## 2 Usage Method:
+
+1. [Run as Microservice with Flask](#usage-run-as-microservice-with-flask)
+1. [Running via Script](#usage-running-via-script)
+
+Make sure to obtain the `.mp4` or `.m3u8` link.
+
+<details>
+    <summary> How to get .m3u8 link </summary>
+    <ol>
+        <li>Open Developer Tools or Ctrl + Shift + I on your browser.</li>
+        <li>Search the video you would like to donwload and play it.</li>
+        <li>On Developer Tools open Network Tab.</li>
+        <li>Type ".m3u8" in the search bar.</li>
+        <li>Right click on the m3u8 master file and copy the link address.
+            <br>
+            <img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="600" height="auto">
+        </li>
+    </ol>
+</details>
 
 ## Usage (Run as Microservice with Flask)
 
+Run the following command and navigate to the application server (e.g. http://127.0.0.1:3000).
+
 ```shell
-flask --app app run --host 0.0.0.0 --port 3000
+flask --app app run --port 3000
 ```
 
 _Note: Only support MP4 video download for now_
 
 ## Usage (Running via Script)
 
+### Scrap MP4 Video
+
+Run the following script.
+
+```shell
+python3 video_downloader.py "<the_link>" --name-file-as custom_name
+```
+
+Copy the `.mp4` video link and proceed with [Example 1](#)
+
+### Scrap M3U8 Video
+
 Total of 3 main steps to web scrap a m3u8 video with this repo.
 
-1. [Get the m3u8 master file link](#)
-   1. Open Developer Tools or Ctrl + Shift + I on your browser.
-   1. Search the video you would like to donwload and play it.
-   1. On Developer Tools open Network Tab.
-   1. Type ".m3u8" in the search bar.
-   1. Right click on the m3u8 master file and copy the link address.
-      <img src="./docs/image/How_to_get_m3u8_master_file.png" alt="image" width="600" height="auto">
-1. Run the link with the script
-1. Wait download to complete :)
+1. Get the m3u8 master file link
+1. Run the link with the script.
+1. Wait download to complete.
 
 ### Example 1:
 
