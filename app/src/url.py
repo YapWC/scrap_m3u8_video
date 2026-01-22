@@ -24,6 +24,7 @@ class Url:
             url (str): The target url
         """
         self.url = url
+        self.title = self.get_title()
         self.response = self.get_response(url, self.__class__.__name__)
 
     @staticmethod
@@ -64,6 +65,10 @@ class Url:
         base_url = "/".join(new_url)
         return base_url
 
+    def get_title(self):
+        filename_without_extension  = Path(self.url).stem
+        return filename_without_extension
+
 
 class Mp4Url(Url):
     """Target mp4 url"""
@@ -76,15 +81,7 @@ class Mp4Url(Url):
             url (str): The target url for video with mp4 format 
         """
         super().__init__(url)
-        self.title = self.__get_title()
-        self.data = VideoData(self.response, self.extension)
-    
-    def __get_title(self):
-        if ".mp4" in self.url:
-            return Path(self.url).name
-        
-        # Use 'raise' to actually trigger the error
-        raise ValueError(f"Invalid URL: '{self.url}' is not a .mp4 file.")
+        self.data = VideoData(self.response)
 
 
 class M3u8Url(Url):
@@ -101,7 +98,7 @@ class M3u8Url(Url):
         super().__init__(url)
         self.metadata = self.__get_metadata()
         self.ts_video_binary_contents = self.__get_ts_contents()
-        self.video_instance = VideoData(self.ts_video_binary_contents)
+        self.data = VideoData(self.ts_video_binary_contents)
     
     def __get_metadata(self):
         """
@@ -122,6 +119,7 @@ class M3u8Url(Url):
         for key in self.video_key_in_m3u8_file:
             specific_metadata = self.metadata[key]
             if specific_metadata:
+                print('More Links found in m3u8 %s', key)
                 # First link are always connected to the highest resolution video
                 first_data_link = specific_metadata[0]["uri"]
                 if self.check_if_word_exist_in_the_link(first_data_link, "https"):
