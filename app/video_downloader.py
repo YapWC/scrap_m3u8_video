@@ -1,3 +1,5 @@
+"""This module act as the service api for flask to backend logic"""
+
 from .src.url import Mp4Url, M3u8Url
 import argparse
 import os

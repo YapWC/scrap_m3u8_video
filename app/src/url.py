@@ -1,4 +1,4 @@
-"""This module deal with url requests"""
+"""This module deal with url requests manipulation"""
 
 import requests
 import m3u8
